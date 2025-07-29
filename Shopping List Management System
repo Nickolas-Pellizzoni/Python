@@ -1,0 +1,36 @@
+# Shopping List Management System
+shopping_list = []
+print('1 - Add item\n' 
+      '2 - Remove item\n' 
+      '3 - See list\n' 
+      '4 - Leave\n')
+question = int(input('Choose an option: '))
+
+if question == 1:
+    add = input('What do you want to add? ')
+    while add != '':
+        add = input('What do you want to add? ')
+        if add != '':
+            add = add.lower()
+            add = add.capitalize()
+            shopping_list.append(add)
+        else:
+            pass
+    print(shopping_list)
+elif question == 2:
+    remove = input('What do you want to remove? ')
+    while remove != '':
+        remove = input('What do you want to remove? ')
+        if remove != '':
+            remove = remove.lower()
+            remove = remove.capitalize()
+            shopping_list.remove(remove)
+        else:
+            pass
+    print(shopping_list)
+elif question == 3:
+    print(shopping_list)
+elif question == 4:
+    pass
+else:
+    print('Insert a valid number!')
