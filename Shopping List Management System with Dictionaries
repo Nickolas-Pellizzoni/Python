@@ -1,0 +1,44 @@
+# solução
+shopping_list = {}
+print('1 - Add item\n' 
+      '2 - Remove item\n' 
+      '3 - See list\n' 
+      '4 - Leave\n')
+question = int(input('Choose an option: '))
+
+if question == 1:
+    add_item = input('What item do you want to add? ')
+    number_items = input('And how much do you want to add? ')
+    add_item = add_item.lower()
+    add_item = add_item.capitalize()
+    if add_item != '':
+      shopping_list[add_item] = number_items
+    while add_item != '' and number_items != '':
+      add_item = input('What item do you want to add? ')
+      number_items = input('And how much do you want to add? ')
+      if add_item != '':
+            shopping_list[add_item] = number_items
+      elif add_item == '':
+          break
+      print(shopping_list)
+
+elif question == 2:         
+      remove_item = input('What do you want to remove? ')
+      if remove_item in shopping_list:
+          del shopping_list[remove_item]
+      else:
+          pass
+      while remove_item != '':
+          remove_item = input('What do you want to remove? ')
+      if remove_item in shopping_list:
+          del shopping_list[remove_item]
+      else:
+          pass
+      print(shopping_list)
+elif question == 3:
+    print(shopping_list)
+
+elif question == 4:
+    pass
+else:
+    print('Insert a valid number!')
