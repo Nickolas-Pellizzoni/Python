@@ -1,0 +1,16 @@
+dados = {
+    'Hospital Santa Esperança':{'Diabetes Mellitus':6842, 'Hipertensão Arterial Sistêmica':5011, 'Depressão Maior':3879, 'Câncer de Mama':792, 'Hepatite C':218, 'Lúpus Eritematoso Sistêmico':96, 'Esquizofrenia':504, 'DPOC':1237, 'AVC Isquêmico':1153, 'Artrite Reumatoide':843},
+    'Instituto de Saúde São Gabriel':{'Diabetes Mellitus Tipo 2':4792, 'Hipertensão Arterial Sistêmica':5904, 'Depressão Maior':4187, 'HIV/AIDS':673, 'Asma Grave':1244, 'Infarto Agudo do Miocárdio':2109, 'Transtorno de Pânico':887, 'Tuberculose':311, 'Parkinson':346, 'Psoríase':579},
+    'Hospital Universitário Pio XII':{'Diabetes Mellitus Tipo 2':3998, 'Hipertensão Arterial Sistêmica':4106, 'Depressão Maior':5228, 'Colite Ulcerativa':431, 'Doença de Crohn':389, 'Transtorno Bipolar':732, 'Doença Renal Crônica':1654, 'AVC Hemorrágico':413, 'Miastenia Gravis':78, 'Endometriose':954},
+    'Hospital Nossa Senhora das Vitórias':{'Diabetes Mellitus Tipo 2':7603, 'Hipertensão Arterial Sistêmica': 6200, 'Depressão Maior':3600, 'Câncer de Próstata':873, 'Insuficiência Cardíaca':1104, 'Transtorno de Ansiedade Generelizada':1955, 'Hepatite B':204, 'Glaucoma':722, 'Eczema Atópico':688, 'Doença Celíaca':217},
+    'Hospital São Martinho':{'Diabetes Mellitus Tipo 2':4888, 'Hipertensão Arterial Sistêmica':5432, 'Depressão Maior':3100, 'Obesidade Mórbida':2540, 'Transtorno de Personalidade Borderline':273, 'Câncer de Pulmão':621, 'Doença Arterial Coronariana':1789, 'Úlcera Gástrica':399}
+}
+
+for hospital in dados:
+    for doenca in dados[hospital]:
+        if dados[hospital].get(doenca) > 2000 and not 'Hospital' in hospital:
+            print('A região do hospital {} parece estar passando por epidemias locais de:\n' \
+            '{}, com {} casos\n'.format(hospital, doenca, dados[hospital].get(doenca)))
+        elif dados[hospital].get(doenca) > 2000 and 'Hospital' in hospital:
+            print('A região do {} parece estar passando por epidemias locais de:\n' \
+            '{}, com {} casos\n'.format(hospital, doenca, dados[hospital].get(doenca)))
