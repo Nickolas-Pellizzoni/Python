@@ -1,0 +1,48 @@
+import random
+
+quanto = int(input('Quando deseja investir? '))
+
+tipo = int(input('Que tipo de investimento deseja?\n' \
+'1 - CDB \n' \
+'2 - Ações (taxa fixa)\n'
+'3 - Ações (taxa variável)\n' \
+'4 - Bitcoin\n' 
+
+'REGRAS:'
+'1 - Renda Fixa: crescimento constante (0,9% ao mês)\n' 
+'2 - Ações: crescimento com precisão (5% ao mês)\n' 
+'3 - Ações: crescimento com aleatoriedade (3% a 5%)\n'
+'4 - Cripto: volatividade mais agressiva (-15% a +20%)'))
+
+tempo = int(input('Por quantos meses deseja investir? '))
+
+if tipo == 1:
+    taxa = random.uniform(0.01, 0.09)
+    valor_futuro = quanto * (1 + taxa)**tempo
+    print('Seu investimento de {} por {} meses a uma taxa de {:.3f} será de R${}'.format(quanto, tempo, taxa, round(valor_futuro,2)))
+elif tipo == 2:
+    taxa = random.uniform(0.01, 0.09)
+    valor_futuro = quanto * (1 + taxa)**tempo
+    print('Seu investimento de {} reais por {} meses a uma taxa de {:.3f} será de R${}'.format(quanto, tempo, taxa, round(valor_futuro,2)))
+elif tipo == 3:
+    taxa = random.uniform(0.01, 0.09)
+    valores = []
+    final = []
+    while len(valores) != tempo:
+        valores.append(taxa)
+        taxa = random.uniform(0.01, 0.09)
+    for i, porcentagem in enumerate(valores):
+        resultado = quanto + (porcentagem * quanto)
+        final.append(resultado)
+    print('{:.2f}'.format(max(final)))
+elif tipo == 4:
+    taxa = random.uniform(0.01, 0.09)
+    valores = []
+    final = []
+    while len(valores) != tempo:
+        valores.append(taxa)
+        taxa = random.uniform(-0.15, 0.20)
+    for i, porcentagem in enumerate(valores):
+        quanto = quanto * (1 + porcentagem)
+        final.append(quanto)
+    print('{:.2f}'.format(final[-1]))
