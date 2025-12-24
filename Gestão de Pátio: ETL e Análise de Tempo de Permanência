@@ -1,0 +1,13 @@
+import pandas as pd
+import datetime
+
+dt = pd.read_csv(r'c:\Users\User\Downloads\id_viagem,transportadora,placa,tipo.txt')
+dt
+for i, data in enumerate(dt['data_chegada']):
+    data = datetime.datetime.fromisoformat(data)
+    if data < (datetime.datetime.now() - datetime.timedelta(hours=8)):
+       tempo = datetime.datetime.now() - data
+       print('Veículo de placa {} da transportadora {} está há 8 horas ou mais no pátio! \n Tempo: {} dia(s) e {} hora(s) no local.\n'.format(dt.iloc[i, 2], dt.iloc[i, 1], tempo.days, round((tempo.seconds / 3600))))
+    else:
+        tempo = datetime.datetime.now() - data
+        print('Veículo de placa {} da transportadora {} está dentro da margem aceitável de espera no local: {} dia(s) e {} hora(s)'.format(dt.iloc[i, 2], dt.iloc[i, 1], tempo.days, round((tempo.seconds / 3600))))
