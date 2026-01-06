@@ -1,0 +1,23 @@
+import pandas as pd
+
+dt = pd.read_csv(r'c:\Users\User\Downloads\Data,Cliente,Produto,Valor_Compra.txt')
+# pd.set_option('display.max_rows', None)
+
+print('A média de ganho foi de R$ {} por dia \n'.format(round(dt['Valor_Compra'].mean())))
+
+mais = dt.drop(columns=['Data', 'Produto'], axis=1).groupby('Cliente').sum()
+print('O cliente que mais deu retorno no ano foi {}, comprando R$ {} em nossa loja \n'.format(mais.index[0], mais.iloc[0,0]))
+print('Este é o ranking ordenado de compras totais:')
+display(mais.sort_values(by='Valor_Compra', ascending=True))
+
+base = round(dt.describe())
+print('A compra máxima foi de R$ {}, custando R$ {} a compra mínima \n'.format(base.iloc[7]['Valor_Compra'], base.iloc[3]['Valor_Compra']))
+
+print('A mediana dos valores de venda foi R$ {} \n'.format(dt['Valor_Compra'].median()))
+
+print('A moda dos valores foi: \n{}'.format(dt['Valor_Compra'].mode()))
+
+dt = dt.drop(['Data', 'Valor_Compra'], axis=1)
+base = dt.groupby('Produto').count().sort_values(by='Cliente', ascending=False)
+
+print('\nA maioria de nossos compradores estão atrás de {}, sendo responsável por {} das vendas'.format(base.index[0], max(base['Cliente'])))
